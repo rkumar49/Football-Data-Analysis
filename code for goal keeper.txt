@@ -1,0 +1,43 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Load the dataset
+df = pd.read_csv('/content/goalkeeper.csv')
+
+# Find the goalkeeper with the most clean sheets
+most_clean_sheets = df.loc[df['Clean Sheets'].idxmax()]
+
+# Find the goalkeeper with the fewest goals conceded
+fewest_goals_conceded = df.loc[df['Goals Conceded'].idxmin()]
+
+# Find the goalkeeper with the most penalties saved
+most_penalties_saved = df.loc[df['Penalties Saved'].idxmax()]
+
+# Print analysis results
+print(f"Goalkeeper with the most clean sheets: {most_clean_sheets['Goalkeeper Name']} ({most_clean_sheets['Clean Sheets']} clean sheets)")
+print(f"Goalkeeper with the fewest goals conceded: {fewest_goals_conceded['Goalkeeper Name']} ({fewest_goals_conceded['Goals Conceded']} goals conceded)")
+print(f"Goalkeeper with the most penalties saved: {most_penalties_saved['Goalkeeper Name']} ({most_penalties_saved['Penalties Saved']} penalties saved)")
+
+# Set the figure size
+plt.figure(figsize=(12, 8))
+
+# Set the position of bars on the x-axis
+bar_width = 0.2
+positions = np.arange(len(df))
+
+# Create bars with some offset for side-by-side display
+plt.bar(positions - bar_width, df['Clean Sheets'], width=bar_width, color='green', label='Clean Sheets')
+plt.bar(positions, df['Goals Conceded'], width=bar_width, color='red', label='Goals Conceded')
+plt.bar(positions + bar_width, df['Penalties Saved'], width=bar_width, color='blue', label='Penalties Saved')
+
+# Add labels and title
+plt.xlabel('Goalkeeper Name')
+plt.ylabel('Count')
+plt.title('Goalkeeper Performance Analysis')
+plt.xticks(positions, df['Goalkeeper Name'], rotation=45, ha='right')
+plt.legend()
+
+# Show the plot
+plt.tight_layout()
+plt.show()

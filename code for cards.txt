@@ -1,0 +1,45 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the dataset
+df = pd.read_csv('/content/cards.csv')
+
+# Calculate the total number of cards (yellow + red) each player received
+df['Total Cards'] = df['Yellow Cards'] + df['Red Cards']
+
+# Find the player with the most yellow cards
+most_yellow_cards_player = df.loc[df['Yellow Cards'].idxmax()]
+
+# Find the player with the most red cards
+most_red_cards_player = df.loc[df['Red Cards'].idxmax()]
+
+# Find the player with the most total cards
+most_total_cards_player = df.loc[df['Total Cards'].idxmax()]
+
+# Print results
+print(f"Player with the most yellow cards: {most_yellow_cards_player['Player Name']} ({most_yellow_cards_player['Yellow Cards']} yellow cards)")
+print(f"Player with the most red cards: {most_red_cards_player['Player Name']} ({most_red_cards_player['Red Cards']} red cards)")
+print(f"Player with the most total cards: {most_total_cards_player['Player Name']} ({most_total_cards_player['Total Cards']} total cards)")
+
+# Visualize the data
+plt.figure(figsize=(10, 6))
+
+# Bar plot for yellow cards
+plt.bar(df['Player Name'], df['Yellow Cards'], color='yellow', label='Yellow Cards')
+
+# Bar plot for red cards stacked on top of yellow cards
+plt.bar(df['Player Name'], df['Red Cards'], bottom=df['Yellow Cards'], color='red', label='Red Cards')
+
+# Adding labels and title
+plt.xlabel('Player Name')
+plt.ylabel('Number of Cards')
+plt.title('Yellow and Red Cards Received by Players')
+plt.xticks(rotation=45, ha='right')
+plt.legend()
+
+# Highlight the player with the most total cards
+plt.bar(most_total_cards_player['Player Name'], most_total_cards_player['Total Cards'], color='blue', label='Most Total Cards')
+
+# Show the plot
+plt.tight_layout()
+plt.show()

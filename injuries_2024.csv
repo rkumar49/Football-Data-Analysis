@@ -1,0 +1,20 @@
+Player Name,Position,Month (2024),Number of Injuries,Injury Details,Recovery Status
+John Smith,Forward,March,2,"Knee, Hamstring",Recovering
+John Smith,Forward,August,1,Ankle,Recovering
+John Smith,Forward,November,1,Shoulder Dislocation,Recovering
+David Brown,Defender,February,1,Concussion,Fully Recovered
+David Brown,Defender,June,2,"Hamstring, Ankle",Fully Recovered
+David Brown,Defender,October,1,Groin Strain,Recovering
+David Brown,Defender,December,1,Shoulder Dislocation,Recovering
+Liam Wilson,Forward,January,1,Back,Recovering
+Liam Wilson,Forward,April,1,Calf Strain,Recovering
+Liam Wilson,Forward,September,1,Knee,Fully Recovered
+Liam Wilson,Forward,November,1,Thigh,Fully Recovered
+Sam Taylor,Midfielder,March,1,Thigh,Fully Recovered
+Sam Taylor,Midfielder,July,1,Ankle,Fully Recovered
+Sam Taylor,Midfielder,September,1,Groin Strain,Fully Recovered
+Sam Taylor,Midfielder,December,1,Wrist,Recovering
+Chris Evans,Defender,February,1,Knee,Fully Recovered
+Chris Evans,Defender,May,1,Shoulder,Fully Recovered
+Chris Evans,Defender,October,1,Hamstring,Recovering
+Chris Evans,Defender,November,1,Wrist,Recovering

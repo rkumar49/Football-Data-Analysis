@@ -1,0 +1,29 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load the CSV file into a DataFrame
+df = pd.read_csv('/content/injuries_2024.csv')
+
+# Aggregate the number of injuries per player
+injuries_per_player = df.groupby('Player Name')['Number of Injuries'].sum().reset_index()
+
+# Find the player with the highest number of injuries
+least_fit_player = injuries_per_player.loc[injuries_per_player['Number of Injuries'].idxmax()]
+
+print(f"The player with the highest number of injuries is {least_fit_player['Player Name']} with {least_fit_player['Number of Injuries']} injuries.")
+
+# Plot the data
+plt.figure(figsize=(10, 6))
+plt.bar(injuries_per_player['Player Name'], injuries_per_player['Number of Injuries'], color='skyblue')
+plt.xlabel('Player Name')
+plt.ylabel('Number of Injuries')
+plt.title('Number of Injuries per Player in 2024')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+
+# Highlight the player with the highest number of injuries
+plt.bar(least_fit_player['Player Name'], least_fit_player['Number of Injuries'], color='red')
+
+# Show the plot
+plt.show()
+
